@@ -4,7 +4,15 @@ from astropy.coordinates import SkyCoord
 from swifttools.swift_too import Data, TOO
 from swifttools.swift_too import ObsQuery
 from pandas import *
+'''
+READ BEFORE RUNNING
+When running this code, put it in the same folder as the csv youre readong from.
+run from console the following line:
 
+python3 SNQuery.py snlist.csv ~/Downloads
+
+Where snlist.csv should be the name of the csv and ~/Downloads is the folder that you want all the downloads to go to.
+'''
 
 # Use command line to grab arguments from the user
 parser = argparse.ArgumentParser(description='automate file grab')
@@ -23,9 +31,10 @@ too = TOO()
 def query(SNname): #query needs to have a download of uvot and auxil data with a range of 8 arcminutes
     coords = astropy.coordinates.get_icrs_coordinates(SNname)
     oq = ObsQuery(skycoord=coords, radius=8/60)
-    for k in range(len(oq)):
-        data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[0].obsid,clobber=True)
-
+    print(oq)
+    #for k in range(len(oq)):
+    #    data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[k].obsid,clobber=True)
+    print(output+'/'+SNname+'/'+oq[k].obsid)
 for k in range(len(SN)):
     if str(SN[k]) != 'nan':
         print("Currently processing", SN[k])

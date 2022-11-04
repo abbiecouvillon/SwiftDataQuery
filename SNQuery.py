@@ -33,14 +33,14 @@ def query(SNname): #query needs to have a download of uvot and auxil data with a
     oq = ObsQuery(skycoord=coords, radius=8/60)
     print(len(oq))
     for k in range(len(oq)):
-        print(f"obs id: {k}")
+        print(f"obs iter: {k}")
         print(oq[k].obsid)
         data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname,clobber=False)
-        print(output+'/'+SNname+'/'+oq[k].obsid)
+
 
 print(SN)
 for i in range(len(SN)):
-    print(f"check: {i}")
+    print(f"check iter: {i}")
     if str(SN[i]) != 'nan':
         print("Currently processing", SN[i])
         query(SN[i])

@@ -35,7 +35,9 @@ def query(SNname): #query needs to have a download of uvot and auxil data with a
     #for k in range(len(oq)):
     #    data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[k].obsid,clobber=True)
     print(output+'/'+SNname+'/'+oq[k].obsid)
-for k in range(len(SN)):
+
+print(SN)
+for k in range(len(SN)-1):
     if str(SN[k]) != 'nan':
         print("Currently processing", SN[k])
         query(SN[k])

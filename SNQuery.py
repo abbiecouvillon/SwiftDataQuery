@@ -31,15 +31,18 @@ too = TOO()
 def query(SNname): #query needs to have a download of uvot and auxil data with a range of 8 arcminutes
     coords = astropy.coordinates.get_icrs_coordinates(SNname)
     oq = ObsQuery(skycoord=coords, radius=8/60)
-    print(oq)
+    print(len(oq))
     for k in range(len(oq)):
-        data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[k].obsid,clobber=True)
+        print(f"obs id: {k}")
+        print(oq[k].obsid)
+        data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname,clobber=False)
         print(output+'/'+SNname+'/'+oq[k].obsid)
 
 print(SN)
-for k in range(len(SN)-1):
-    if str(SN[k]) != 'nan':
-        print("Currently processing", SN[k])
-        query(SN[k])
+for i in range(len(SN)):
+    print(f"check: {i}")
+    if str(SN[i]) != 'nan':
+        print("Currently processing", SN[i])
+        query(SN[i])
     else:
         print('SN field empty. Skipping.')

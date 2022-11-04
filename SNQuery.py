@@ -4,15 +4,6 @@ from astropy.coordinates import SkyCoord
 from swifttools.swift_too import Data, TOO
 from swifttools.swift_too import ObsQuery
 from pandas import *
-'''
-READ BEFORE RUNNING
-When running this code, put it in the same folder as the csv youre readong from.
-run from console the following line:
-
-python3 SNQuery.py snlist.csv ~/Downloads
-
-Where snlist.csv should be the name of the csv and ~/Downloads is the folder that you want all the downloads to go to.
-'''
 
 # Use command line to grab arguments from the user
 parser = argparse.ArgumentParser(description='automate file grab')

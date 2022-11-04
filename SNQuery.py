@@ -32,9 +32,9 @@ def query(SNname): #query needs to have a download of uvot and auxil data with a
     coords = astropy.coordinates.get_icrs_coordinates(SNname)
     oq = ObsQuery(skycoord=coords, radius=8/60)
     print(oq)
-    #for k in range(len(oq)):
-    #    data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[k].obsid,clobber=True)
-    print(output+'/'+SNname+'/'+oq[k].obsid)
+    for k in range(len(oq)):
+        data = Data(obsid=oq[k].obsid, uvot=True, auxil=True, outdir=output+'/'+SNname+'/'+oq[k].obsid,clobber=True)
+        print(output+'/'+SNname+'/'+oq[k].obsid)
 
 print(SN)
 for k in range(len(SN)-1):
